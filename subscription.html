@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>طباعتي - الاشتراك الشهري</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .login {
+      background: #2563eb;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .title h1 {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .title p {
+      color: #667085;
+      font-size: 18px;
+    }
+
+    .plans {
+      display: flex;
+      justify-content: center;
+    }
+
+    .plan {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.08);
+      border: 2px solid #2563eb;
+    }
+
+    .plan-title {
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .amount {
+      text-align: center;
+      color: #2563eb;
+      font-size: 52px;
+      font-weight: bold;
+      margin: 20px 0 5px;
+    }
+
+    .month {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .features li {
+      padding: 11px 0;
+      border-bottom: 1px solid #eaecf0;
+      font-size: 16px;
+    }
+
+    .features li:last-child {
+      border-bottom: 0;
+    }
+
+    .subscribe {
+      width: 100%;
+      border: 0;
+      background: #2563eb;
+      color: white;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .subscribe:hover {
+      background: #1d4ed8;
+    }
+
+    .subscribe:disabled {
+      background: #98a2b3;
+      cursor: not-allowed;
+    }
+
+    .notice {
+      margin-top: 18px;
+      text-align: center;
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    .links {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .links a {
+      color: #2563eb;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer {
+      margin-top: 70px;
+      background: #172033;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 650px) {
+
+      header {
+        padding: 15px 5%;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .title h1 {
+        font-size: 32px;
+      }
+
+      .plan {
+        padding: 28px 20px;
+      }
+
+      .amount {
+        font-size: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    🖨️ طباعتي
+  </div>
+
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="print2.html">الطباعة</a>
+    <a href="copy.html">النسخ</a>
+    <a href="profile.html">حسابي</a>
+  </nav>
+
+  <a class="login" href="auth.html">
+    تسجيل الدخول
+  </a>
+
+</header>
+
+
+<main class="container">
+
+  <div class="title">
+
+    <h1>
+      💳 الاشتراك
+    </h1>
+
+    <p>
+      اختر اشتراك طباعتي الشهري واستمتع بجميع المميزات.
+    </p>
+
+  </div>
+
+
+  <div class="plans">
+
+    <div class="plan">
+
+      <div class="plan-title">
+        اشتراك طباعتي
+      </div>
+
+      <div class="amount">
+        $10
+      </div>
+
+      <div class="month">
+        شهريًا
+      </div>
+
+
+      <ul class="features">
+
+        <li>
+          ✅ رفع ملفات PDF
+        </li>
+
+        <li>
+          ✅ رفع الصور
+        </li>
+
+        <li>
+          ✅ إرسال الملفات للطباعة
+        </li>
+
+        <li>
+          ✅ أدوات PDF
+        </li>
+
+        <li>
+          ✅ سجل عمليات الطباعة
+        </li>
+
+        <li>
+          ✅ ربط الطابعات
+        </li>
+
+        <li>
+          ✅ استخدام الخدمات المدفوعة
+        </li>
+
+      </ul>
+
+
+      <button
+        id="subscribeBtn"
+        class="subscribe"
+      >
+        اشترك الآن — $10 شهريًا
+      </button>
+
+
+      <div id="message"></div>
+
+
+      <div class="notice">
+        الدفع الإلكتروني سيتم تفعيله لاحقًا بعد اكتمال المشروع.
+        <br>
+        لن يتم خصم أي مبلغ من هذا الزر حاليًا.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="links">
+
+    <a href="index.html">
+      الرئيسية
+    </a>
+
+    <a href="profile.html">
+      حسابي
+    </a>
+
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 طباعتي — اطبع واشترك
+</footer>
+
+
+<script type="module">
+
+  import {
+    createClient
+  } from "https://esm.sh/@supabase/supabase-js@2";
+
+
+  const SUPABASE_URL =
+    "https://alzypsyxibcaftqxttui.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
+
+
+  const supabase =
+    createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  const subscribeBtn =
+    document.getElementById("subscribeBtn");
+
+
+  const message =
+    document.getElementById("message");
+
+
+  async function checkLogin() {
+
+    const {
+      data: {
+        session
+      }
+    } = await supabase.auth.getSession();
+
+
+    if (!session) {
+
+      subscribeBtn.textContent =
+        "سجل الدخول للاشتراك";
+
+
+      subscribeBtn.onclick =
+        function () {
+
+          window.location.href =
+            "auth.html";
+
+        };
+
+      return false;
+
+    }
+
+
+    return true;
+
+  }
+
+
+  subscribeBtn.addEventListener(
+    "click",
+    async function () {
+
+      const loggedIn =
+        await checkLogin();
+
+
+      if (!loggedIn) return;
+
+
+      message.style.color =
+        "#2563eb";
+
+      message.textContent =
+        "صفحة الدفع سيتم ربطها لاحقًا.";
+
+    }
+  );
+
+
+  checkLogin();
+
+</script>
+
+</body>
+</html>
