@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>طباعتي - النسخ</title>
 
   <style>
@@ -38,16 +36,11 @@
     nav {
       display: flex;
       gap: 20px;
-      align-items: center;
     }
 
     nav a {
       text-decoration: none;
       color: #333;
-    }
-
-    nav a:hover {
-      color: #2563eb;
     }
 
     .login {
@@ -80,18 +73,13 @@
     }
 
     .upload-box {
+      display: block;
       background: white;
       border: 2px dashed #93b4f8;
       border-radius: 20px;
       padding: 45px 20px;
       text-align: center;
       cursor: pointer;
-      transition: .2s;
-    }
-
-    .upload-box:hover {
-      border-color: #2563eb;
-      background: #f8faff;
     }
 
     .upload-icon {
@@ -230,10 +218,6 @@
       margin-top: 20px;
     }
 
-    .action:hover {
-      background: #1d4ed8;
-    }
-
     .action:disabled {
       background: #98a2b3;
       cursor: not-allowed;
@@ -257,7 +241,6 @@
     }
 
     @media (max-width: 650px) {
-
       header {
         padding: 15px 5%;
       }
@@ -272,15 +255,6 @@
 
       .file-card {
         align-items: flex-start;
-      }
-
-      .preview {
-        width: 60px;
-        height: 60px;
-      }
-
-      .delete {
-        align-self: center;
       }
     }
   </style>
@@ -312,9 +286,7 @@
 
   <div class="title">
 
-    <h1>
-      📋 نسخ ملفاتك
-    </h1>
+    <h1>📋 نسخ ملفاتك</h1>
 
     <p>
       ارفع ملفات PDF أو الصور وحدد عدد النسخ التي تريدها.
@@ -325,17 +297,11 @@
 
   <label class="upload-box" for="fileInput">
 
-    <div class="upload-icon">
-      📁
-    </div>
+    <div class="upload-icon">📁</div>
 
-    <h2>
-      اختر ملفاتك
-    </h2>
+    <h2>اختر ملفاتك</h2>
 
-    <p>
-      PDF أو JPG أو PNG أو WEBP
-    </p>
+    <p>PDF أو JPG أو PNG أو WEBP</p>
 
     <span class="upload-button">
       اختيار الملفات
@@ -352,7 +318,6 @@
 
 
   <div id="files" class="files"></div>
-
 
   <div id="empty" class="empty">
     لم تتم إضافة أي ملفات بعد.
@@ -371,11 +336,7 @@
       <strong id="copyCount">0</strong>
     </div>
 
-    <button
-      id="continueBtn"
-      class="action"
-      disabled
-    >
+    <button id="continueBtn" class="action" disabled>
       متابعة
     </button>
 
@@ -413,7 +374,6 @@
   let selectedFiles = [];
 
 
-  // تحويل حجم الملف إلى صيغة مناسبة
   function formatSize(bytes) {
 
     if (bytes < 1024)
@@ -426,7 +386,6 @@
   }
 
 
-  // إضافة الملفات
   fileInput.addEventListener(
     "change",
     function () {
@@ -446,17 +405,13 @@
         if (!exists) {
 
           selectedFiles.push({
-
             file: file,
-
             copies: 1
-
           });
 
         }
 
       });
-
 
       fileInput.value = "";
 
@@ -466,14 +421,12 @@
   );
 
 
-  // عرض الملفات
   function renderFiles() {
 
     filesContainer.innerHTML = "";
 
     fileCount.textContent =
       selectedFiles.length;
-
 
     let totalCopies = 0;
 
@@ -554,11 +507,8 @@
           document.createElement("input");
 
         input.type = "number";
-
         input.min = "1";
-
         input.max = "100";
-
         input.value = item.copies;
 
 
@@ -574,16 +524,12 @@
               isNaN(value) ||
               value < 1
             ) {
-
               value = 1;
-
             }
 
 
             if (value > 100) {
-
               value = 100;
-
             }
 
 
@@ -611,8 +557,7 @@
 
         deleteBtn.className = "delete";
 
-        deleteBtn.textContent =
-          "حذف";
+        deleteBtn.textContent = "حذف";
 
 
         deleteBtn.addEventListener(
@@ -659,17 +604,13 @@
   }
 
 
-  // زر المتابعة
   continueBtn.addEventListener(
     "click",
     function () {
 
       if (selectedFiles.length === 0) {
-
         return;
-
       }
-
 
       alert(
         "تم تجهيز " +
