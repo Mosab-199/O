@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>طباعتي - حسابي</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .logout {
+      border: 0;
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 45px auto;
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .title h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .title p {
+      color: #667085;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.07);
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      background: #eff6ff;
+      color: #2563eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 42px;
+      margin: 0 auto 20px;
+    }
+
+    .email {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #eaecf0;
+    }
+
+    .row:last-child {
+      border-bottom: 0;
+    }
+
+    .label {
+      color: #667085;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+
+    .active {
+      color: #027a48;
+      background: #ecfdf3;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    .inactive {
+      color: #b42318;
+      background: #fef3f2;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .link {
+      text-align: center;
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 11px;
+      background: #eff6ff;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .link:hover {
+      background: #dbeafe;
+    }
+
+    .loading {
+      text-align: center;
+      color: #667085;
+      padding: 40px;
+    }
+
+    .error {
+      text-align: center;
+      color: #b42318;
+      background: #fef3f2;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: #172033;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 650px) {
+
+      header {
+        padding: 15px 5%;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .title h1 {
+        font-size: 31px;
+      }
+
+      .links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    🖨️ طباعتي
+  </div>
+
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="print2.html">الطباعة</a>
+    <a href="copy.html">النسخ</a>
+  </nav>
+
+  <button id="logoutBtn" class="logout">
+    تسجيل الخروج
+  </button>
+
+</header>
+
+
+<main class="container">
+
+  <div class="title">
+
+    <h1>
+      👤 حسابي
+    </h1>
+
+    <p>
+      إدارة حسابك واشتراكك في طباعتي
+    </p>
+
+  </div>
+
+
+  <div id="loading" class="card loading">
+    جاري تحميل بيانات الحساب...
+  </div>
+
+
+  <div id="content" style="display:none;">
+
+    <div class="card">
+
+      <div class="avatar">
+        👤
+      </div>
+
+      <div id="email" class="email">
+        -
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="row">
+
+        <span class="label">
+          حالة الحساب
+        </span>
+
+        <span id="accountStatus" class="value active">
+          نشط
+        </span>
+
+      </div>
+
+
+      <div class="row">
+
+        <span class="label">
+          حالة الاشتراك
+        </span>
+
+        <span id="subscriptionStatus" class="value inactive">
+          غير مشترك
+        </span>
+
+      </div>
+
+
+      <div class="row">
+
+        <span class="label">
+          تاريخ انتهاء الاشتراك
+        </span>
+
+        <span id="subscriptionDate" class="value">
+          -
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="links">
+
+        <a class="link" href="print2.html">
+          🖨️ الطباعة
+        </a>
+
+        <a class="link" href="copy.html">
+          📋 النسخ
+        </a>
+
+        <a class="link" href="subscription.html">
+          💳 الاشتراك
+        </a>
+
+        <a class="link" href="index.html">
+          🏠 الرئيسية
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="error" style="display:none;" class="error">
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 طباعتي — اطبع واشترك
+</footer>
+
+
+<script type="module">
+
+  import {
+    createClient
+  } from "https://esm.sh/@supabase/supabase-js@2";
+
+
+  const SUPABASE_URL =
+    "https://alzypsyxibcaftqxttui.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
+
+
+  const supabase =
+    createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  const loading =
+    document.getElementById("loading");
+
+  const content =
+    document.getElementById("content");
+
+  const errorBox =
+    document.getElementById("error");
+
+  const email =
+    document.getElementById("email");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+  async function loadAccount() {
+
+    try {
+
+      const {
+        data: {
+          session
+        }
+      } = await supabase.auth.getSession();
+
+
+      if (!session) {
+
+        window.location.href =
+          "auth.html";
+
+        return;
+
+      }
+
+
+      email.textContent =
+        session.user.email || "بدون بريد إلكتروني";
+
+
+      loading.style.display =
+        "none";
+
+      content.style.display =
+        "block";
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      loading.style.display =
+        "none";
+
+      errorBox.style.display =
+        "block";
+
+      errorBox.textContent =
+        "حدث خطأ أثناء تحميل بيانات الحساب.";
+
+    }
+
+  }
+
+
+  logoutBtn.addEventListener(
+    "click",
+    async function () {
+
+      logoutBtn.disabled = true;
+
+      logoutBtn.textContent =
+        "جاري تسجيل الخروج...";
+
+
+      const {
+        error
+      } = await supabase.auth.signOut();
+
+
+      if (error) {
+
+        console.error(error);
+
+        logoutBtn.disabled = false;
+
+        logoutBtn.textContent =
+          "تسجيل الخروج";
+
+        return;
+
+      }
+
+
+      window.location.href =
+        "auth.html";
+
+    }
+  );
+
+
+  loadAccount();
+
+</script>
+
+</body>
+</html>
