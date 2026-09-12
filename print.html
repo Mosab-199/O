@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طباعتي - اطبع ملفك</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px #00000010;
+    }
+
+    .logo {
+      color: #2563eb;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .back {
+      text-decoration: none;
+      color: #2563eb;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #667085;
+      margin-bottom: 30px;
+    }
+
+    .upload-box {
+      background: white;
+      border: 2px dashed #2563eb;
+      border-radius: 20px;
+      padding: 50px 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .upload-box:hover {
+      background: #f0f6ff;
+    }
+
+    .icon {
+      font-size: 55px;
+    }
+
+    .upload-box h2 {
+      margin: 15px 0 8px;
+    }
+
+    .upload-box p {
+      color: #667085;
+    }
+
+    #pdfFile {
+      display: none;
+    }
+
+    .file {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .settings {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      background: #2563eb;
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .success {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #ecfdf3;
+      color: #027a48;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🖨️ طباعتي</div>
+  <a class="back" href="index.html">الرئيسية</a>
+</header>
+
+<div class="container">
+
+  <h1>🖨️ اطبع ملفك</h1>
+
+  <p class="subtitle">
+    ارفع ملف PDF واختر إعدادات الطباعة
+  </p>
+
+  <label class="upload-box" for="pdfFile">
+
+    <div class="icon">📄</div>
+
+    <h2>اختر ملف PDF</h2>
+
+    <p>اضغط هنا لاختيار الملف من جهازك</p>
+
+  </label>
+
+  <input
+    id="pdfFile"
+    type="file"
+    accept="application/pdf"
+  >
+
+  <div class="file" id="fileInfo">
+
+    <strong>الملف:</strong>
+    <span id="fileName"></span>
+
+    <br><br>
+
+    <strong>الحجم:</strong>
+    <span id="fileSize"></span>
+
+  </div>
+
+  <div class="settings" id="settings">
+
+    <div class="field">
+
+      <label>الطابعة</label>
+
+      <select id="printer">
+
+        <option>اختر الطابعة</option>
+        <option>HP LaserJet</option>
+        <option>Canon</option>
+        <option>Epson</option>
+
+      </select>
+
+    </div>
+
+    <div class="field">
+
+      <label>عدد النسخ</label>
+
+      <input
+        id="copies"
+        type="number"
+        value="1"
+        min="1"
+        max="100"
+      >
+
+    </div>
+
+    <div class="field">
+
+      <label>اللون</label>
+
+      <select id="color">
+
+        <option>أبيض وأسود</option>
+        <option>ملون</option>
+
+      </select>
+
+    </div>
+
+    <div class="field">
+
+      <label>الطباعة</label>
+
+      <select id="duplex">
+
+        <option>وجه واحد</option>
+        <option>وجهين</option>
+
+      </select>
+
+    </div>
+
+    <button onclick="printFile()">
+      🖨️ إرسال للطباعة
+    </button>
+
+    <div class="success" id="success">
+      ✅ تم إنشاء طلب الطباعة التجريبي
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const pdfFile = document.getElementById("pdfFile");
+
+pdfFile.addEventListener("change", function () {
+
+  const file = this.files[0];
+
+  if (!file) return;
+
+  if (file.type !== "application/pdf") {
+
+    alert("من فضلك اختر ملف PDF فقط.");
+
+    this.value = "";
+
+    return;
+  }
+
+  if (file.size > 20 * 1024 * 1024) {
+
+    alert("الحد الأقصى للملف هو 20MB.");
+
+    this.value = "";
+
+    return;
+  }
+
+  document.getElementById("fileName").textContent =
+    file.name;
+
+  document.getElementById("fileSize").textContent =
+    (file.size / 1024 / 1024).toFixed(2) + " MB";
+
+  document.getElementById("fileInfo").style.display =
+    "block";
+
+  document.getElementById("settings").style.display =
+    "block";
+
+});
+
+
+function printFile() {
+
+  const printer =
+    document.getElementById("printer").value;
+
+  if (printer === "اختر الطابعة") {
+
+    alert("اختر الطابعة أولاً.");
+
+    return;
+  }
+
+  document.getElementById("success").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
