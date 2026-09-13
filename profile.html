@@ -482,13 +482,12 @@
 
       }if (subscription.expires_at) {
   const expiryDate = new Date(subscription.expires_at);
+const expiryDate = new Date(subscription.expires_at);
 
-  subscriptionDate.textContent =
-    expiryDate.toLocaleDateString("ar-SA", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit"
-    });
-} else {
-  subscriptionDate.textContent = "-";
-    }
+subscriptionDate.textContent =
+  expiryDate.getUTCDate() +
+  "/" +
+  (expiryDate.getUTCMonth() + 1) +
+  "/" +
+  expiryDate.getUTCFullYear();
+  
