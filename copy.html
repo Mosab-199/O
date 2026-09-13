@@ -232,6 +232,26 @@
       margin-top: 20px;
     }
 
+    .status {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .status.success {
+      display: block;
+      background: #ecfdf3;
+      color: #027a48;
+    }
+
+    .status.error {
+      display: block;
+      background: #fef3f2;
+      color: #b42318;
+    }
+
     footer {
       margin-top: 60px;
       background: #172033;
@@ -281,7 +301,6 @@
 
 </header>
 
-
 <main class="container">
 
   <div class="title">
@@ -293,7 +312,6 @@
     </p>
 
   </div>
-
 
   <label class="upload-box" for="fileInput">
 
@@ -316,13 +334,11 @@
     multiple
   >
 
-
   <div id="files" class="files"></div>
 
   <div id="empty" class="empty">
     لم تتم إضافة أي ملفات بعد.
   </div>
-
 
   <div class="summary">
 
@@ -340,17 +356,37 @@
       متابعة
     </button>
 
+    <div id="status" class="status"></div>
+
   </div>
 
 </main>
-
 
 <footer>
   © 2026 طباعتي — اطبع واشترك
 </footer>
 
+<script type="module">
 
-<script>
+  import {
+    createClient
+  } from "https://esm.sh/@supabase/supabase-js@2";
+
+
+  const SUPABASE_URL =
+    "https://alzypsyxibcaftqxttui.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
+
+
+  const supabase =
+    createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
 
   const fileInput =
     document.getElementById("fileInput");
@@ -369,6 +405,9 @@
 
   const continueBtn =
     document.getElementById("continueBtn");
+
+  const status =
+    document.getElementById("status");
 
 
   let selectedFiles = [];
@@ -393,6 +432,7 @@
       const newFiles =
         Array.from(fileInput.files);
 
+
       newFiles.forEach(file => {
 
         const exists =
@@ -401,6 +441,7 @@
               item.file.name === file.name &&
               item.file.size === file.size
           );
+
 
         if (!exists) {
 
@@ -412,6 +453,7 @@
         }
 
       });
+
 
       fileInput.value = "";
 
@@ -428,6 +470,7 @@
     fileCount.textContent =
       selectedFiles.length;
 
+
     let totalCopies = 0;
 
 
@@ -440,28 +483,35 @@
         const card =
           document.createElement("div");
 
-        card.className = "file-card";
+        card.className =
+          "file-card";
 
 
         const preview =
           document.createElement("div");
 
-        preview.className = "preview";
+        preview.className =
+          "preview";
 
 
-        if (item.file.type.startsWith("image/")) {
+        if (
+          item.file.type.startsWith("image/")
+        ) {
 
           const img =
             document.createElement("img");
 
           img.src =
-            URL.createObjectURL(item.file);
+            URL.createObjectURL(
+              item.file
+            );
 
           preview.appendChild(img);
 
         } else {
 
-          preview.textContent = "📄";
+          preview.textContent =
+            "📄";
 
         }
 
@@ -469,13 +519,15 @@
         const info =
           document.createElement("div");
 
-        info.className = "file-info";
+        info.className =
+          "file-info";
 
 
         const name =
           document.createElement("div");
 
-        name.className = "file-name";
+        name.className =
+          "file-name";
 
         name.textContent =
           item.file.name;
@@ -484,16 +536,20 @@
         const size =
           document.createElement("div");
 
-        size.className = "file-size";
+        size.className =
+          "file-size";
 
         size.textContent =
-          formatSize(item.file.size);
+          formatSize(
+            item.file.size
+          );
 
 
         const copies =
           document.createElement("div");
 
-        copies.className = "copies";
+        copies.className =
+          "copies";
 
 
         const label =
@@ -506,10 +562,17 @@
         const input =
           document.createElement("input");
 
-        input.type = "number";
-        input.min = "1";
-        input.max = "100";
-        input.value = item.copies;
+        input.type =
+          "number";
+
+        input.min =
+          "1";
+
+        input.max =
+          "100";
+
+        input.value =
+          item.copies;
 
 
         input.addEventListener(
@@ -517,7 +580,9 @@
           function () {
 
             let value =
-              parseInt(input.value);
+              parseInt(
+                input.value
+              );
 
 
             if (
@@ -533,9 +598,11 @@
             }
 
 
-            item.copies = value;
+            item.copies =
+              value;
 
-            input.value = value;
+            input.value =
+              value;
 
             renderFiles();
 
@@ -555,16 +622,21 @@
         const deleteBtn =
           document.createElement("button");
 
-        deleteBtn.className = "delete";
+        deleteBtn.className =
+          "delete";
 
-        deleteBtn.textContent = "حذف";
+        deleteBtn.textContent =
+          "حذف";
 
 
         deleteBtn.addEventListener(
           "click",
           function () {
 
-            selectedFiles.splice(index, 1);
+            selectedFiles.splice(
+              index,
+              1
+            );
 
             renderFiles();
 
@@ -587,17 +659,23 @@
       totalCopies;
 
 
-    if (selectedFiles.length === 0) {
+    if (
+      selectedFiles.length === 0
+    ) {
 
-      empty.style.display = "block";
+      empty.style.display =
+        "block";
 
-      continueBtn.disabled = true;
+      continueBtn.disabled =
+        true;
 
     } else {
 
-      empty.style.display = "none";
+      empty.style.display =
+        "none";
 
-      continueBtn.disabled = false;
+      continueBtn.disabled =
+        false;
 
     }
 
@@ -606,19 +684,125 @@
 
   continueBtn.addEventListener(
     "click",
-    function () {
+    async function () {
 
-      if (selectedFiles.length === 0) {
+      if (
+        selectedFiles.length === 0
+      ) {
         return;
       }
 
-      alert(
-        "تم تجهيز " +
-        selectedFiles.length +
-        " ملفًا بإجمالي " +
-        copyCount.textContent +
-        " نسخة."
-      );
+
+      continueBtn.disabled =
+        true;
+
+      continueBtn.textContent =
+        "جاري تسجيل العمليات...";
+
+
+      status.className =
+        "status";
+
+
+      try {
+
+        const {
+          data: {
+            session
+          }
+        } =
+          await supabase.auth.getSession();
+
+
+        if (!session) {
+
+          alert(
+            "يجب تسجيل الدخول أولاً."
+          );
+
+          window.location.href =
+            "auth.html";
+
+          return;
+        }
+
+
+        const operations =
+          selectedFiles.map(
+            item => ({
+
+              user_id:
+                session.user.id,
+
+              operation_type:
+                "copy",
+
+              file_name:
+                item.file.name,
+
+              copies:
+                item.copies,
+
+              status:
+                "completed"
+
+            })
+          );
+
+
+        const {
+          error
+        } =
+          await supabase
+            .from("operations")
+            .insert(
+              operations
+            );
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        status.className =
+          "status success";
+
+        status.textContent =
+          "تم تسجيل عمليات النسخ بنجاح ✅";
+
+
+        selectedFiles = [];
+
+        renderFiles();
+
+
+        continueBtn.textContent =
+          "تم التسجيل ✓";
+
+
+      } catch (error) {
+
+        console.error(
+          "Copy operation error:",
+          error
+        );
+
+
+        status.className =
+          "status error";
+
+        status.textContent =
+          "حدث خطأ أثناء تسجيل العملية. حاول مرة أخرى.";
+
+
+        continueBtn.disabled =
+          false;
+
+        continueBtn.textContent =
+          "متابعة";
+
+      }
 
     }
   );
