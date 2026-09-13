@@ -382,93 +382,160 @@
 
   async function loadAccount() {
 
-    try {
+  try {
 
-      const {
-        data: {
-          session
+    const {
+      data: {
+        session
+      }
+    } = await supabase.auth.getSession();
+
+
+    if (!session) {
+
+      window.location.href = "auth.html";
+
+      return;
+
+    }
+
+
+    // البريد الإلكتروني
+    email.textContent =
+      session.user.email ||
+      "بدون بريد إلكتروني";
+
+
+    // البحث عن آخر اشتراك للمستخدم
+    const {
+      data: subscriptions,
+      error
+    } = await supabase
+      .from("subscriptions")
+      .select(
+        "status, amount, plan, started_at, expires_at"
+      )
+      .eq(
+        "user_id",
+        session.user.id
+      )
+      .order(
+        "created_at",
+        {
+          ascending: false
         }
-      } = await supabase.auth.getSession();
+      )
+      .limit(1);
 
 
-      if (!session) {
+    if (error) {
 
-        window.location.href =
-          "auth.html";
+      throw error;
 
-        return;
+    }
+
+
+    if (
+      subscriptions &&
+      subscriptions.length > 0
+    ) {
+
+      const subscription =
+        subscriptions[0];
+
+
+      // حالة الحساب
+      accountStatus.textContent =
+        "نشط";
+
+
+      accountStatus.className =
+        "value active";
+
+
+      // حالة الاشتراك
+      if (
+        subscription.status === "active"
+      ) {
+
+        subscriptionStatus.textContent =
+          "نشط";
+
+
+        subscriptionStatus.className =
+          "value active";
+
+      } else {
+
+        subscriptionStatus.textContent =
+          "غير نشط";
+
+
+        subscriptionStatus.className =
+          "value inactive";
 
       }
 
 
-      email.textContent =
-        session.user.email || "بدون بريد إلكتروني";
+      // تاريخ انتهاء الاشتراك
+      if (subscription.expires_at) {
+
+        subscriptionDate.textContent =
+          new Date(
+            subscription.expires_at
+          ).toLocaleDateString(
+            "ar-SA"
+          );
+
+      } else {
+
+        subscriptionDate.textContent =
+          "-";
+
+      }
 
 
-      loading.style.display =
-        "none";
+    } else {
 
-      content.style.display =
-        "block";
+      subscriptionStatus.textContent =
+        "غير مشترك";
 
 
-    } catch (error) {
+      subscriptionStatus.className =
+        "value inactive";
 
-      console.error(error);
 
-      loading.style.display =
-        "none";
-
-      errorBox.style.display =
-        "block";
-
-      errorBox.textContent =
-        "حدث خطأ أثناء تحميل بيانات الحساب.";
+      subscriptionDate.textContent =
+        "-";
 
     }
+
+
+    loading.style.display =
+      "none";
+
+
+    content.style.display =
+      "block";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+
+    loading.style.display =
+      "none";
+
+
+    errorBox.style.display =
+      "block";
+
+
+    errorBox.textContent =
+      "حدث خطأ أثناء تحميل بيانات الحساب: " +
+      error.message;
 
   }
 
-
-  logoutBtn.addEventListener(
-    "click",
-    async function () {
-
-      logoutBtn.disabled = true;
-
-      logoutBtn.textContent =
-        "جاري تسجيل الخروج...";
-
-
-      const {
-        error
-      } = await supabase.auth.signOut();
-
-
-      if (error) {
-
-        console.error(error);
-
-        logoutBtn.disabled = false;
-
-        logoutBtn.textContent =
-          "تسجيل الخروج";
-
-        return;
-
       }
-
-
-      window.location.href =
-        "auth.html";
-
-    }
-  );
-
-
-  loadAccount();
-
-</script>
-
-</body>
-</html>
