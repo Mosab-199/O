@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-<head>+
+<head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>طباعتي - حسابي</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -114,6 +116,7 @@
       align-items: center;
       padding: 16px 0;
       border-bottom: 1px solid #eaecf0;
+      gap: 15px;
     }
 
     .row:last-child {
@@ -201,11 +204,20 @@
       .links {
         grid-template-columns: 1fr;
       }
+
+      .row {
+        align-items: flex-start;
+      }
+
     }
+
   </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -214,19 +226,34 @@
   </div>
 
   <nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="print2.html">الطباعة</a>
-    <a href="copy.html">النسخ</a>
+
+    <a href="index.html">
+      الرئيسية
+    </a>
+
+    <a href="print2.html">
+      الطباعة
+    </a>
+
+    <a href="copy.html">
+      النسخ
+    </a>
+
   </nav>
 
-  <button id="logoutBtn" class="logout">
+  <button
+    id="logoutBtn"
+    class="logout">
+
     تسجيل الخروج
+
   </button>
 
 </header>
 
 
 <main class="container">
+
 
   <div class="title">
 
@@ -241,12 +268,19 @@
   </div>
 
 
-  <div id="loading" class="card loading">
+  <div
+    id="loading"
+    class="card loading">
+
     جاري تحميل بيانات الحساب...
+
   </div>
 
 
-  <div id="content" style="display:none;">
+  <div
+    id="content"
+    style="display:none;">
+
 
     <div class="card">
 
@@ -254,8 +288,12 @@
         👤
       </div>
 
-      <div id="email" class="email">
+      <div
+        id="email"
+        class="email">
+
         -
+
       </div>
 
     </div>
@@ -263,14 +301,19 @@
 
     <div class="card">
 
+
       <div class="row">
 
         <span class="label">
           حالة الحساب
         </span>
 
-        <span id="accountStatus" class="value active">
+        <span
+          id="accountStatus"
+          class="value active">
+
           نشط
+
         </span>
 
       </div>
@@ -282,8 +325,12 @@
           حالة الاشتراك
         </span>
 
-        <span id="subscriptionStatus" class="value inactive">
+        <span
+          id="subscriptionStatus"
+          class="value inactive">
+
           غير مشترك
+
         </span>
 
       </div>
@@ -295,11 +342,16 @@
           تاريخ انتهاء الاشتراك
         </span>
 
-        <span id="subscriptionDate" class="value">
+        <span
+          id="subscriptionDate"
+          class="value">
+
           -
+
         </span>
 
       </div>
+
 
     </div>
 
@@ -308,79 +360,143 @@
 
       <div class="links">
 
-        <a class="link" href="print2.html">
+        <a
+          class="link"
+          href="print2.html">
+
           🖨️ الطباعة
+
         </a>
 
-        <a class="link" href="copy.html">
+        <a
+          class="link"
+          href="copy.html">
+
           📋 النسخ
+
         </a>
 
-        <a class="link" href="subscription.html">
+        <a
+          class="link"
+          href="subscription.html">
+
           💳 الاشتراك
+
         </a>
 
-        <a class="link" href="index.html">
+        <a
+          class="link"
+          href="index.html">
+
           🏠 الرئيسية
+
         </a>
 
       </div>
 
     </div>
 
+
   </div>
 
 
-  <div id="error" style="display:none;" class="error">
+  <div
+    id="error"
+    style="display:none;"
+    class="error">
+
   </div>
+
 
 </main>
 
 
 <footer>
+
   © 2026 طباعتي — اطبع واشترك
+
 </footer>
 
 
 <script type="module">
 
-  import {
-    createClient
-  } from "https://esm.sh/@supabase/supabase-js@2";
+import {
+  createClient
+} from "https://esm.sh/@supabase/supabase-js@2";
 
 
-  const SUPABASE_URL =
-    "https://alzypsyxibcaftqxttui.supabase.co";
+const SUPABASE_URL =
+  "https://alzypsyxibcaftqxttui.supabase.co";
 
 
-  const SUPABASE_KEY =
-    "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
+const SUPABASE_KEY =
+  "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
 
 
-  const supabase =
-    createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+const supabase =
+  createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-  const loading =
-    document.getElementById("loading");
-
-  const content =
-    document.getElementById("content");
-
-  const errorBox =
-    document.getElementById("error");
-
-  const email =
-    document.getElementById("email");
-
-  const logoutBtn =
-    document.getElementById("logoutBtn");
+const loading =
+  document.getElementById("loading");
 
 
-  async function loadAccount() {
+const content =
+  document.getElementById("content");
+
+
+const errorBox =
+  document.getElementById("error");
+
+
+const email =
+  document.getElementById("email");
+
+
+const accountStatus =
+  document.getElementById("accountStatus");
+
+
+const subscriptionStatus =
+  document.getElementById("subscriptionStatus");
+
+
+const subscriptionDate =
+  document.getElementById("subscriptionDate");
+
+
+const logoutBtn =
+  document.getElementById("logoutBtn");
+
+
+function formatDate(dateString) {
+
+  if (!dateString) {
+    return "-";
+  }
+
+  const date =
+    new Date(dateString);
+
+  if (isNaN(date.getTime())) {
+    return "-";
+  }
+
+  return (
+    date.getUTCDate() +
+    "/" +
+    (date.getUTCMonth() + 1) +
+    "/" +
+    date.getUTCFullYear()
+  );
+
+}
+
+
+async function loadAccount() {
 
   try {
 
@@ -388,63 +504,61 @@
       data: {
         session
       }
-    } = await supabase.auth.getSession();
+    } =
+      await supabase.auth.getSession();
 
 
     if (!session) {
 
-      window.location.href = "auth.html";
+      window.location.href =
+        "auth.html";
 
       return;
 
     }
 
 
-    // البريد الإلكتروني
     email.textContent =
       session.user.email ||
       "بدون بريد إلكتروني";
 
 
-    // البحث عن آخر اشتراك للمستخدم
     const {
-      data: subscriptions,
+      data,
       error
-    } = await supabase
-      .from("subscriptions")
-      .select(
-        "status, amount, plan, started_at, expires_at"
-      )
-      .eq(
-        "user_id",
-        session.user.id
-      )
-      .order(
-        "created_at",
-        {
-          ascending: false
-        }
-      )
-      .limit(1);
+    } =
+      await supabase
+        .from("subscriptions")
+        .select(
+          "status, amount, plan, started_at, expires_at, created_at"
+        )
+        .eq(
+          "user_id",
+          session.user.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        )
+        .limit(1);
 
 
     if (error) {
-
       throw error;
-
     }
 
 
     if (
-      subscriptions &&
-      subscriptions.length > 0
+      data &&
+      data.length > 0
     ) {
 
       const subscription =
-        subscriptions[0];
+        data[0];
 
 
-      // حالة الحساب
       accountStatus.textContent =
         "نشط";
 
@@ -453,9 +567,9 @@
         "value active";
 
 
-      // حالة الاشتراك
       if (
-        subscription.status === "active"
+        subscription.status ===
+        "active"
       ) {
 
         subscriptionStatus.textContent =
@@ -477,17 +591,102 @@
       }
 
 
-      // تاريخ انتهاء الاشتراك
-      
+      subscriptionDate.textContent =
+        formatDate(
+          subscription.expires_at
+        );
 
-      }if (subscription.expires_at) {
-  const expiryDate = new Date(subscription.expires_at);
-const expiryDate = new Date(subscription.expires_at);
 
-subscriptionDate.textContent =
-  expiryDate.getUTCDate() +
-  "/" +
-  (expiryDate.getUTCMonth() + 1) +
-  "/" +
-  expiryDate.getUTCFullYear();
-  
+    } else {
+
+      subscriptionStatus.textContent =
+        "غير مشترك";
+
+
+      subscriptionStatus.className =
+        "value inactive";
+
+
+      subscriptionDate.textContent =
+        "-";
+
+    }
+
+
+    loading.style.display =
+      "none";
+
+
+    content.style.display =
+      "block";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+
+    loading.style.display =
+      "none";
+
+
+    errorBox.style.display =
+      "block";
+
+
+    errorBox.textContent =
+      "حدث خطأ أثناء تحميل بيانات الحساب: " +
+      error.message;
+
+  }
+
+}
+
+
+logoutBtn.addEventListener(
+  "click",
+  async function() {
+
+    logoutBtn.disabled =
+      true;
+
+    logoutBtn.textContent =
+      "جاري تسجيل الخروج...";
+
+
+    const {
+      error
+    } =
+      await supabase.auth.signOut();
+
+
+    if (error) {
+
+      console.error(error);
+
+      logoutBtn.disabled =
+        false;
+
+      logoutBtn.textContent =
+        "تسجيل الخروج";
+
+      return;
+
+    }
+
+
+    window.location.href =
+      "auth.html";
+
+  }
+);
+
+
+loadAccount();
+
+</script>
+
+
+</body>
+
+</html>
