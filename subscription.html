@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>طباعتي - الاشتراك</title>
-
-<style>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>طباعتي - الاشتراك</title><style>
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
@@ -148,132 +137,63 @@ h1 {
   font-size: 13px;
   line-height: 1.7;
 }
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<div class="logo">
-🖨️ طباعتي
-</div>
-
-</header>
-
-
-<div class="container">
-
-<div class="card">
-
-<div class="icon">
+</style></head><body><header>
+  <div class="logo">
+    🖨️ طباعتي
+  </div>
+</header><div class="container"><div class="card"><div class="icon">
 🖨️
-</div>
-
-<h1>
+</div><h1>
 اشتراك طباعتي
-</h1>
-
-<p class="description">
+</h1><p class="description">
 اطبع ملفات PDF من هاتفك أو الكمبيوتر
 واستخدم أدوات الطباعة بسهولة.
-</p>
-
-
-<div class="price">
-
-$10
-
+</p><div class="price">
+37.50
 <small>
-/ شهريًا
+ريال / شهريًا
 </small>
-
-</div>
-
-
-<ul class="features">
-
+</div><ul class="features">
 <li>✅ رفع ملفات PDF</li>
-
 <li>✅ معاينة الملفات</li>
-
 <li>✅ إعدادات الطباعة</li>
-
 <li>✅ اختيار عدد النسخ</li>
-
 <li>✅ اختيار اللون</li>
-
 <li>✅ سجل عمليات الطباعة</li>
-
-</ul>
-
-
-<div
-id="account"
-class="account">
-
+</ul><div id="account" class="account">
 جاري التحقق من الحساب...
-
-</div>
-
-
-<button
+</div><button
 id="subscribeBtn"
 class="subscribe"
 disabled>
-
 جاري التحميل...
-
 </button>
-
 
 <div
 id="subscriptionStatus"
 class="subscription-status">
-
-</div>
-
-
-<a
+</div><a
 class="print"
 href="print2.html">
-
 🖨️ تجربة الطباعة
-
 </a>
 
-
 <div class="note">
-
-هذه نسخة تجريبية حاليًا.
+الاشتراك الشهري 37.50 ريال.
 <br>
-
-سيتم لاحقًا ربط الزر ببوابة دفع حقيقية
-لتحصيل الاشتراك الشهري $10.
-
-</div>
-
-</div>
-
-</div>
-
-
-<script type="module">
+سيتم تحويلك إلى صفحة الدفع الآمنة لإتمام الاشتراك.
+</div></div>
+</div><script type="module">
 
 import {
   createClient
 } from "https://esm.sh/@supabase/supabase-js@2";
 
-
 const SUPABASE_URL =
   "https://alzypsyxibcaftqxttui.supabase.co";
 
-
 const SUPABASE_KEY =
   "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
-
 
 const supabase =
   createClient(
@@ -281,23 +201,17 @@ const supabase =
     SUPABASE_KEY
   );
 
+const CHECKOUT_URL =
+  "https://tabati.lemonsqueezy.com/checkout/buy/49161c42-5712-4dc9-aeca-ce9d4118ceef";
 
 const account =
-  document.getElementById(
-    "account"
-  );
-
+  document.getElementById("account");
 
 const subscribeBtn =
-  document.getElementById(
-    "subscribeBtn"
-  );
-
+  document.getElementById("subscribeBtn");
 
 const subscriptionStatus =
-  document.getElementById(
-    "subscriptionStatus"
-  );
+  document.getElementById("subscriptionStatus");
 
 
 async function loadSubscription() {
@@ -311,30 +225,24 @@ async function loadSubscription() {
     } =
       await supabase.auth.getSession();
 
-
     if (!session) {
 
       account.textContent =
         "يجب تسجيل الدخول أولاً.";
 
-      subscribeBtn.disabled =
-        false;
+      subscribeBtn.disabled = false;
 
       subscribeBtn.textContent =
         "تسجيل الدخول";
 
       subscribeBtn.onclick =
         function () {
-
           window.location.href =
             "auth.html";
-
         };
 
       return;
-
     }
-
 
     account.textContent =
       "الحساب: " +
@@ -342,7 +250,6 @@ async function loadSubscription() {
         session.user.email ||
         "بدون بريد إلكتروني"
       );
-
 
     const {
       data,
@@ -365,11 +272,9 @@ async function loadSubscription() {
         )
         .limit(1);
 
-
     if (error) {
       throw error;
     }
-
 
     if (
       data &&
@@ -380,47 +285,38 @@ async function loadSubscription() {
       const subscription =
         data[0];
 
-
       subscriptionStatus.className =
         "subscription-status active";
-
 
       subscriptionStatus.innerHTML =
         "✅ اشتراكك نشط" +
         "<br>" +
         "الخطة: شهري" +
         "<br>" +
-        "السعر: $" +
+        "السعر: " +
         subscription.amount +
+        " ريال" +
         "<br>" +
         "ينتهي: " +
         formatDate(
           subscription.expires_at
         );
 
-
-      subscribeBtn.disabled =
-        true;
+      subscribeBtn.disabled = true;
 
       subscribeBtn.textContent =
         "الاشتراك نشط ✓";
 
-
       return;
-
     }
 
-
-    subscribeBtn.disabled =
-      false;
+    subscribeBtn.disabled = false;
 
     subscribeBtn.textContent =
-      "💳 تفعيل الاشتراك التجريبي — $10";
-
+      "💳 اشترك الآن — 37.50 ريال شهريًا";
 
     subscribeBtn.onclick =
-      activateSubscription;
-
+      goToCheckout;
 
   } catch (error) {
 
@@ -429,11 +325,8 @@ async function loadSubscription() {
     account.textContent =
       "حدث خطأ أثناء تحميل بيانات الاشتراك.";
 
-    subscribeBtn.disabled =
-      true;
-
+    subscribeBtn.disabled = true;
   }
-
 }
 
 
@@ -446,131 +339,17 @@ function formatDate(date) {
   return new Date(date).toLocaleDateString(
     "ar-SA"
   );
-
 }
 
 
-async function activateSubscription() {
+function goToCheckout() {
 
-  subscribeBtn.disabled =
-    true;
-
-  subscribeBtn.textContent =
-    "جاري تفعيل الاشتراك...";
-
-
-  try {
-
-    const {
-      data: {
-        session
-      }
-    } =
-      await supabase.auth.getSession();
-
-
-    if (!session) {
-
-      window.location.href =
-        "auth.html";
-
-      return;
-
-    }
-
-
-    const start =
-      new Date();
-
-
-    const expiry =
-      new Date(start);
-
-
-    expiry.setMonth(
-      expiry.getMonth() + 1
-    );
-
-
-    const {
-      error
-    } =
-      await supabase
-        .from("subscriptions")
-        .insert({
-
-          user_id:
-            session.user.id,
-
-          status:
-            "active",
-
-          plan:
-            "monthly",
-
-          amount:
-            10.00,
-
-          started_at:
-            start.toISOString(),
-
-          expires_at:
-            expiry.toISOString()
-
-        });
-
-
-    if (error) {
-      throw error;
-    }
-
-
-    subscriptionStatus.className =
-      "subscription-status active";
-
-
-    subscriptionStatus.innerHTML =
-      "✅ تم تفعيل الاشتراك التجريبي" +
-      "<br>" +
-      "السعر: $10 شهريًا" +
-      "<br>" +
-      "ينتهي: " +
-      formatDate(
-        expiry
-      );
-
-
-    subscribeBtn.textContent =
-      "الاشتراك نشط ✓";
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    subscriptionStatus.className =
-      "subscription-status inactive";
-
-
-    subscriptionStatus.textContent =
-      "حدث خطأ أثناء تفعيل الاشتراك. حاول مرة أخرى.";
-
-
-    subscribeBtn.disabled =
-      false;
-
-    subscribeBtn.textContent =
-      "💳 تفعيل الاشتراك التجريبي — $10";
-
-  }
-
+  window.location.href =
+    CHECKOUT_URL;
 }
 
 
 loadSubscription();
 
-</script>
-
-</body>
-
+</script></body>
 </html>
