@@ -478,64 +478,17 @@
 
 
       // تاريخ انتهاء الاشتراك
-      if (subscription.expires_at) {
+      
 
-        subscriptionDate.textContent =
-          new Date(
-            subscription.expires_at
-          ).toLocaleDateString(
-            "ar-SA"
-          );
+      }if (subscription.expires_at) {
+  const expiryDate = new Date(subscription.expires_at);
 
-      } else {
-
-        subscriptionDate.textContent =
-          "-";
-
-      }
-
-
-    } else {
-
-      subscriptionStatus.textContent =
-        "غير مشترك";
-
-
-      subscriptionStatus.className =
-        "value inactive";
-
-
-      subscriptionDate.textContent =
-        "-";
-
+  subscriptionDate.textContent =
+    expiryDate.toLocaleDateString("ar-SA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    });
+} else {
+  subscriptionDate.textContent = "-";
     }
-
-
-    loading.style.display =
-      "none";
-
-
-    content.style.display =
-      "block";
-
-
-  } catch (error) {
-
-    console.error(error);
-
-
-    loading.style.display =
-      "none";
-
-
-    errorBox.style.display =
-      "block";
-
-
-    errorBox.textContent =
-      "حدث خطأ أثناء تحميل بيانات الحساب: " +
-      error.message;
-
-  }
-
-      }
