@@ -684,8 +684,8 @@ async function loadHistory() {
       "block";
 
     errorBox.textContent =
-      "حدث خطأ أثناء تحميل سجل العمليات.";
-
+  "حدث خطأ: " +
+  (error.message || "خطأ غير معروف");
   }
 
 }
