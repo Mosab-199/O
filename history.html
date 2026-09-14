@@ -2,279 +2,279 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>طباعتي - سجل العمليات</title>
+  <title>طباعتي - سجل العمليات</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-  background: #f5f7fb;
-  color: #172033;
-}
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
 
-header {
-  background: white;
-  padding: 18px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,.06);
-}
+    header {
+      background: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
 
-.logo {
-  font-size: 25px;
-  font-weight: bold;
-  color: #2563eb;
-}
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #2563eb;
+    }
 
-nav {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
 
-nav a {
-  text-decoration: none;
-  color: #333;
-}
+    nav a {
+      text-decoration: none;
+      color: #333;
+    }
 
-nav a:hover {
-  color: #2563eb;
-}
+    nav a:hover {
+      color: #2563eb;
+    }
 
-.login {
-  background: #2563eb;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-}
+    .login {
+      background: #2563eb;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
 
-.container {
-  max-width: 1000px;
-  margin: 45px auto;
-  padding: 20px;
-}
+    .container {
+      max-width: 1000px;
+      margin: 45px auto;
+      padding: 20px;
+    }
 
-.title {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.title h1 {
-  font-size: 38px;
-  margin-bottom: 10px;
-}
+    .title h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
 
-.title p {
-  color: #667085;
-  font-size: 17px;
-}
+    .title p {
+      color: #667085;
+      font-size: 17px;
+    }
 
-.summary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-bottom: 25px;
-}
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
 
-.summary-card {
-  background: white;
-  padding: 22px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 5px 18px rgba(0,0,0,.05);
-}
+    .summary-card {
+      background: white;
+      padding: 22px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 5px 18px rgba(0,0,0,.05);
+    }
 
-.summary-icon {
-  font-size: 30px;
-  margin-bottom: 8px;
-}
+    .summary-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
 
-.summary-number {
-  font-size: 25px;
-  font-weight: bold;
-  color: #2563eb;
-}
+    .summary-number {
+      font-size: 25px;
+      font-weight: bold;
+      color: #2563eb;
+    }
 
-.summary-label {
-  color: #667085;
-  margin-top: 5px;
-}
+    .summary-label {
+      color: #667085;
+      margin-top: 5px;
+    }
 
-.history-box {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,.06);
-  overflow: hidden;
-}
+    .history-box {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+      overflow: hidden;
+    }
 
-.history-header {
-  padding: 20px 25px;
-  border-bottom: 1px solid #eaecf0;
-  font-size: 20px;
-  font-weight: bold;
-}
+    .history-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid #eaecf0;
+      font-size: 20px;
+      font-weight: bold;
+    }
 
-.empty {
-  padding: 60px 20px;
-  text-align: center;
-  color: #667085;
-}
+    .empty {
+      padding: 60px 20px;
+      text-align: center;
+      color: #667085;
+    }
 
-.empty-icon {
-  font-size: 55px;
-  margin-bottom: 15px;
-}
+    .empty-icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
 
-.empty h2 {
-  color: #172033;
-  margin-bottom: 10px;
-  font-size: 22px;
-}
+    .empty h2 {
+      color: #172033;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
 
-.empty p {
-  line-height: 1.7;
-}
+    .empty p {
+      line-height: 1.7;
+    }
 
-.operation {
-  padding: 20px 25px;
-  border-bottom: 1px solid #eaecf0;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+    .operation {
+      padding: 20px 25px;
+      border-bottom: 1px solid #eaecf0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-.operation:last-child {
-  border-bottom: 0;
-}
+    .operation:last-child {
+      border-bottom: 0;
+    }
 
-.operation-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  background: #eff6ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  flex-shrink: 0;
-}
+    .operation-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      flex-shrink: 0;
+    }
 
-.operation-info {
-  flex: 1;
-  min-width: 0;
-}
+    .operation-info {
+      flex: 1;
+      min-width: 0;
+    }
 
-.operation-name {
-  font-weight: bold;
-  margin-bottom: 6px;
-  word-break: break-word;
-}
+    .operation-name {
+      font-weight: bold;
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
 
-.operation-date {
-  color: #667085;
-  font-size: 13px;
-}
+    .operation-date {
+      color: #667085;
+      font-size: 13px;
+    }
 
-.operation-copies {
-  color: #667085;
-  font-size: 13px;
-  margin-top: 5px;
-}
+    .operation-copies {
+      color: #667085;
+      font-size: 13px;
+      margin-top: 5px;
+    }
 
-.status {
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: #ecfdf3;
-  color: #027a48;
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #ecfdf3;
+      color: #027a48;
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
 
-.status.failed {
-  background: #fef3f2;
-  color: #b42318;
-}
+    .status.started {
+      background: #fffaeb;
+      color: #b54708;
+    }
 
-.status.started {
-  background: #fffaeb;
-  color: #b54708;
-}
+    .status.failed {
+      background: #fef3f2;
+      color: #b42318;
+    }
 
-.error {
-  padding: 25px;
-  text-align: center;
-  color: #b42318;
-  background: #fef3f2;
-  line-height: 1.7;
-}
+    .error {
+      padding: 25px;
+      text-align: center;
+      color: #b42318;
+      background: #fef3f2;
+      line-height: 1.7;
+    }
 
-.links {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 25px;
-  flex-wrap: wrap;
-}
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
 
-.link {
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 10px;
-  background: #eff6ff;
-  color: #2563eb;
-  font-weight: bold;
-}
+    .link {
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #2563eb;
+      font-weight: bold;
+    }
 
-.link:hover {
-  background: #dbeafe;
-}
+    .link:hover {
+      background: #dbeafe;
+    }
 
-footer {
-  margin-top: 60px;
-  background: #172033;
-  color: white;
-  text-align: center;
-  padding: 25px;
-}
+    footer {
+      margin-top: 60px;
+      background: #172033;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
 
-@media (max-width: 700px) {
+    @media (max-width: 700px) {
 
-  header {
-    padding: 15px 5%;
-  }
+      header {
+        padding: 15px 5%;
+      }
 
-  nav {
-    display: none;
-  }
+      nav {
+        display: none;
+      }
 
-  .title h1 {
-    font-size: 31px;
-  }
+      .title h1 {
+        font-size: 31px;
+      }
 
-  .summary {
-    grid-template-columns: 1fr;
-  }
+      .summary {
+        grid-template-columns: 1fr;
+      }
 
-  .operation {
-    align-items: flex-start;
-  }
+      .operation {
+        align-items: flex-start;
+      }
 
-  .status {
-    font-size: 11px;
-  }
-}
-</style>
+      .status {
+        font-size: 11px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -302,7 +302,9 @@ footer {
 
   <div class="title">
 
-    <h1>📜 سجل العمليات</h1>
+    <h1>
+      📜 سجل العمليات
+    </h1>
 
     <p>
       تابع عمليات الطباعة والنسخ الخاصة بك.
@@ -313,21 +315,57 @@ footer {
   <div class="summary">
 
     <div class="summary-card">
-      <div class="summary-icon">🖨️</div>
-      <div class="summary-number" id="printCount">0</div>
-      <div class="summary-label">عمليات الطباعة</div>
+
+      <div class="summary-icon">
+        🖨️
+      </div>
+
+      <div
+        class="summary-number"
+        id="printCount">
+        0
+      </div>
+
+      <div class="summary-label">
+        عمليات الطباعة
+      </div>
+
     </div>
 
     <div class="summary-card">
-      <div class="summary-icon">📋</div>
-      <div class="summary-number" id="copyCount">0</div>
-      <div class="summary-label">عمليات النسخ</div>
+
+      <div class="summary-icon">
+        📋
+      </div>
+
+      <div
+        class="summary-number"
+        id="copyCount">
+        0
+      </div>
+
+      <div class="summary-label">
+        عمليات النسخ
+      </div>
+
     </div>
 
     <div class="summary-card">
-      <div class="summary-icon">📊</div>
-      <div class="summary-number" id="totalCount">0</div>
-      <div class="summary-label">إجمالي العمليات</div>
+
+      <div class="summary-icon">
+        📊
+      </div>
+
+      <div
+        class="summary-number"
+        id="totalCount">
+        0
+      </div>
+
+      <div class="summary-label">
+        إجمالي العمليات
+      </div>
+
     </div>
 
   </div>
@@ -338,19 +376,32 @@ footer {
       آخر العمليات
     </div>
 
-    <div id="loading" class="empty">
+    <div
+      id="loading"
+      class="empty">
 
-      <div class="empty-icon">⏳</div>
+      <div class="empty-icon">
+        ⏳
+      </div>
 
-      <h2>جاري تحميل العمليات...</h2>
+      <h2>
+        جاري تحميل العمليات...
+      </h2>
 
     </div>
 
-    <div id="empty" class="empty" style="display:none;">
+    <div
+      id="empty"
+      class="empty"
+      style="display:none;">
 
-      <div class="empty-icon">📭</div>
+      <div class="empty-icon">
+        📭
+      </div>
 
-      <h2>لا توجد عمليات حتى الآن</h2>
+      <h2>
+        لا توجد عمليات حتى الآن
+      </h2>
 
       <p>
         عندما تستخدم الطباعة أو النسخ،
@@ -361,25 +412,37 @@ footer {
 
     <div id="operations"></div>
 
-    <div id="error" class="error" style="display:none;"></div>
+    <div
+      id="error"
+      class="error"
+      style="display:none;">
+    </div>
 
   </div>
 
   <div class="links">
 
-    <a class="link" href="print2.html">
+    <a
+      class="link"
+      href="print2.html">
       🖨️ ابدأ الطباعة
     </a>
 
-    <a class="link" href="copy.html">
+    <a
+      class="link"
+      href="copy.html">
       📋 ابدأ النسخ
     </a>
 
-    <a class="link" href="profile.html">
+    <a
+      class="link"
+      href="profile.html">
       👤 حسابي
     </a>
 
-    <a class="link" href="index.html">
+    <a
+      class="link"
+      href="index.html">
       🏠 الرئيسية
     </a>
 
@@ -397,11 +460,14 @@ import {
   createClient
 } from "https://esm.sh/@supabase/supabase-js@2";
 
+
 const SUPABASE_URL =
   "https://alzypsyxibcaftqxttui.supabase.co";
 
+
 const SUPABASE_KEY =
   "sb_publishable_qnAbX-La-ElvIKIyW9BNbA_PXU5IIV-";
+
 
 const supabase =
   createClient(
@@ -409,32 +475,48 @@ const supabase =
     SUPABASE_KEY
   );
 
+
 const loading =
-  document.getElementById("loading");
+  document.getElementById(
+    "loading"
+  );
 
 const empty =
-  document.getElementById("empty");
+  document.getElementById(
+    "empty"
+  );
 
 const operationsBox =
-  document.getElementById("operations");
+  document.getElementById(
+    "operations"
+  );
 
 const errorBox =
-  document.getElementById("error");
+  document.getElementById(
+    "error"
+  );
 
 const printCount =
-  document.getElementById("printCount");
+  document.getElementById(
+    "printCount"
+  );
 
 const copyCount =
-  document.getElementById("copyCount");
+  document.getElementById(
+    "copyCount"
+  );
 
 const totalCount =
-  document.getElementById("totalCount");
+  document.getElementById(
+    "totalCount"
+  );
 
 
 function operationIcon(type) {
 
   const value =
-    String(type || "").toLowerCase();
+    String(type || "")
+      .toLowerCase();
 
   if (
     value === "copy" ||
@@ -450,7 +532,8 @@ function operationIcon(type) {
 function operationName(type) {
 
   const value =
-    String(type || "").toLowerCase();
+    String(type || "")
+      .toLowerCase();
 
   if (
     value === "copy" ||
@@ -470,24 +553,11 @@ function operationName(type) {
 }
 
 
-function formatDate(date) {
-
-  if (!date) return "-";
-
-  return new Date(date).toLocaleString(
-    "ar-SA",
-    {
-      dateStyle: "medium",
-      timeStyle: "short"
-    }
-  );
-}
-
-
 function statusText(status) {
 
   const value =
-    String(status || "").toLowerCase();
+    String(status || "")
+      .toLowerCase();
 
   if (value === "started") {
     return "بدأت";
@@ -505,6 +575,23 @@ function statusText(status) {
 }
 
 
+function formatDate(date) {
+
+  if (!date) {
+    return "-";
+  }
+
+  return new Date(date)
+    .toLocaleString(
+      "ar-SA",
+      {
+        dateStyle: "medium",
+        timeStyle: "short"
+      }
+    );
+}
+
+
 async function loadHistory() {
 
   try {
@@ -513,7 +600,9 @@ async function loadHistory() {
       data: {
         session
       }
-    } = await supabase.auth.getSession();
+    } =
+      await supabase.auth.getSession();
+
 
     if (!session) {
 
@@ -523,55 +612,70 @@ async function loadHistory() {
       return;
     }
 
+
     const {
       data,
       error
-    } = await supabase
-      .from("operations")
-      .select(
-        "id, type, file_name, copies, status, created_at"
-      )
-      .eq(
-        "user_id",
-        session.user.id
-      )
-      .order(
-        "created_at",
-        {
-          ascending: false
-        }
-      );
+    } =
+      await supabase
+        .from("operations")
+        .select(
+          "id, operation_type, file_name, copies, status, created_at"
+        )
+        .eq(
+          "user_id",
+          session.user.id
+        )
+        .order(
+          "created_at",
+          {
+            ascending: false
+          }
+        );
+
 
     if (error) {
       throw error;
     }
 
+
     loading.style.display =
       "none";
+
 
     const operations =
       data || [];
 
+
     let prints = 0;
     let copies = 0;
 
-    operations.forEach(item => {
 
-      const type =
-        String(
-          item.type || ""
-        ).toLowerCase();
+    operations.forEach(
+      item => {
 
-      if (
-        type === "copy" ||
-        type.includes("نسخ")
-      ) {
-        copies++;
-      } else {
-        prints++;
+        const type =
+          String(
+            item.operation_type || ""
+          ).toLowerCase();
+
+
+        if (
+          type === "copy" ||
+          type.includes("نسخ")
+        ) {
+
+          copies++;
+
+        } else {
+
+          prints++;
+
+        }
+
       }
+    );
 
-    });
 
     printCount.textContent =
       prints;
@@ -582,7 +686,10 @@ async function loadHistory() {
     totalCount.textContent =
       operations.length;
 
-    if (operations.length === 0) {
+
+    if (
+      operations.length === 0
+    ) {
 
       empty.style.display =
         "block";
@@ -590,105 +697,155 @@ async function loadHistory() {
       return;
     }
 
-    operationsBox.innerHTML = "";
 
-    operations.forEach(item => {
+    operationsBox.innerHTML =
+      "";
 
-      const operation =
-        document.createElement("div");
 
-      operation.className =
-        "operation";
+    operations.forEach(
+      item => {
 
-      const icon =
-        document.createElement("div");
+        const operation =
+          document.createElement(
+            "div"
+          );
 
-      icon.className =
-        "operation-icon";
+        operation.className =
+          "operation";
 
-      icon.textContent =
-        operationIcon(item.type);
 
-      const info =
-        document.createElement("div");
+        const icon =
+          document.createElement(
+            "div"
+          );
 
-      info.className =
-        "operation-info";
+        icon.className =
+          "operation-icon";
 
-      const name =
-        document.createElement("div");
+        icon.textContent =
+          operationIcon(
+            item.operation_type
+          );
 
-      name.className =
-        "operation-name";
 
-      name.textContent =
-        item.file_name ||
-        operationName(item.type);
+        const info =
+          document.createElement(
+            "div"
+          );
 
-      const date =
-        document.createElement("div");
+        info.className =
+          "operation-info";
 
-      date.className =
-        "operation-date";
 
-      date.textContent =
-        formatDate(item.created_at);
+        const name =
+          document.createElement(
+            "div"
+          );
 
-      const copiesText =
-        document.createElement("div");
+        name.className =
+          "operation-name";
 
-      copiesText.className =
-        "operation-copies";
+        name.textContent =
+          item.file_name ||
+          operationName(
+            item.operation_type
+          );
 
-      copiesText.textContent =
-        "عدد النسخ: " +
-        (item.copies || 1);
 
-      info.appendChild(name);
-      info.appendChild(date);
-      info.appendChild(copiesText);
+        const date =
+          document.createElement(
+            "div"
+          );
 
-      const status =
-        document.createElement("div");
+        date.className =
+          "operation-date";
 
-      const statusValue =
-        String(
-          item.status || ""
-        ).toLowerCase();
+        date.textContent =
+          formatDate(
+            item.created_at
+          );
 
-      status.className =
-        "status " +
-        statusValue;
 
-      status.textContent =
-        statusText(item.status);
+        const copiesText =
+          document.createElement(
+            "div"
+          );
 
-      operation.appendChild(icon);
-      operation.appendChild(info);
-      operation.appendChild(status);
+        copiesText.className =
+          "operation-copies";
 
-      operationsBox.appendChild(
-        operation
-      );
+        copiesText.textContent =
+          "عدد النسخ: " +
+          (item.copies || 1);
 
-    });
-} catch (error) {
 
-    console.error(error);
+        info.appendChild(name);
+        info.appendChild(date);
+        info.appendChild(copiesText);
+
+
+        const status =
+          document.createElement(
+            "div"
+          );
+
+        const statusValue =
+          String(
+            item.status || ""
+          ).toLowerCase();
+
+
+        status.className =
+          "status " +
+          statusValue;
+
+
+        status.textContent =
+          statusText(
+            item.status
+          );
+
+
+        operation.appendChild(icon);
+        operation.appendChild(info);
+        operation.appendChild(status);
+
+
+        operationsBox.appendChild(
+          operation
+        );
+
+      }
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      "HISTORY ERROR:",
+      error
+    );
+
 
     loading.style.display =
       "none";
 
+
     errorBox.style.display =
       "block";
 
+
     errorBox.textContent =
-  "حدث خطأ: " +
-  (error.message || "خطأ غير معروف");
+      "حدث خطأ أثناء تحميل سجل العمليات: " +
+      (
+        error.message ||
+        "خطأ غير معروف"
+      );
+
   }
 
 }
-  
+
 
 loadHistory();
 
